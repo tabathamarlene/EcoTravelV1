@@ -1,0 +1,5 @@
+{
+  "name": "EcoTravel AI Planner",
+  "description": "A personalized, emission-conscious travel planning assistant that helps users find sustainable routes and visualize their CO₂ footprint.",
+  "requestFramePermissions": []
+}
