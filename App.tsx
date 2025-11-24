@@ -9,6 +9,9 @@ import Dashboard from './components/Dashboard';
 import CompareModal from './components/CompareModal';
 import { Map, UserCircle, LayoutDashboard, Edit2, PlusCircle, Menu } from 'lucide-react';
 
+// Consistent Avatar URL used across the app
+const AI_AVATAR_URL = "https://api.dicebear.com/9.x/micah/svg?seed=TravelBuddy&backgroundColor=d1fae5&mouth=smile&hair=pixie";
+
 const App: React.FC = () => {
   const [view, setView] = useState<'form' | 'dashboard' | 'profile'>('form');
   const [isLoading, setIsLoading] = useState(false);
@@ -403,13 +406,17 @@ const App: React.FC = () => {
           />
         </div>
 
-        {/* Mobile Chat Toggle (Floating Button) if chat is "minimized" on mobile */}
+        {/* Mobile Chat Toggle (Floating Avatar Button) if chat is "minimized" (hidden on mobile) */}
         <button 
            onClick={() => setIsChatMinimized(!isChatMinimized)}
-           className={`lg:hidden fixed bottom-4 right-4 bg-emerald-600 text-white p-4 rounded-full shadow-xl z-[60] hover:bg-emerald-700 transition-transform hover:scale-110 ${!isChatMinimized ? 'hidden' : 'block'}`}
+           className={`lg:hidden fixed bottom-4 right-4 h-16 w-16 rounded-full shadow-2xl z-[60] transition-transform hover:scale-105 active:scale-95 border-4 border-white overflow-hidden bg-emerald-100 ${!isChatMinimized ? 'hidden' : 'block'}`}
         >
-           <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
-           <Menu /> 
+           <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-red-500 border-2 border-white rounded-full animate-pulse z-10"></span>
+           <img 
+             src={AI_AVATAR_URL} 
+             alt="Open Chat" 
+             className="w-full h-full object-cover"
+           />
         </button>
 
       </main>
